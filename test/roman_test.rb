@@ -8,8 +8,12 @@ class RomanTest < Minitest::Test
     converter.convert arabic
   end
 
-  def test_bad_input
+  def test_zero_input
     assert_raises(BadInputError) { convert_number 0 }
+  end
+
+  def test_bad_input
+    assert_raises(ArgumentError) { convert_number "LOL" }
   end
 
   def test_converts_1
@@ -120,4 +124,15 @@ class RomanTest < Minitest::Test
     end
   end
 
+  def test_converts_100
+    roman = convert_number 100
+
+    assert_equal "C", roman
+  end
+
+  def test_converts_100_range
+    {101 => "CI", 102 => "CII", 104 => "CIV", 105 => "CV", 109 => "CIX"}.each do |arabic, roman|
+      assert_equal roman, convert_number(arabic)
+    end
+  end
 end
