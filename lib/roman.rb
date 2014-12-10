@@ -12,14 +12,15 @@ class Roman
   private
   def actually_converts arabic
     case arabic
-    when 0..3 then "I" * arabic
+    when 0...4 then "I" * arabic
     when 4 then "IV"
-    when 5..8 then lalala("V", 5, arabic)
+    when 5...9 then lalala("V", 5, arabic)
     when 9 then "IX"
     when 10...40 then lalala("X", 10, arabic)
     when 40...50 then lalala("XL", 40, arabic)
     when 50...90 then lalala("L", 50, arabic)
     when 90...100 then lalala("XC", 90, arabic)
+    when ->(x) { x >= 100 } lalala("C", 100, arabic)
     else
       raise BadInputError
     end
