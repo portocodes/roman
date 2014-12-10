@@ -8,6 +8,10 @@ class RomanTest < Minitest::Test
     converter.convert arabic
   end
 
+  def test_bad_input
+    assert_raises(BadInputError) { convert_number 0 }
+  end
+
   def test_converts_1
     roman = convert_number 1
 
@@ -25,4 +29,17 @@ class RomanTest < Minitest::Test
 
     assert_equal "III", roman
   end
+
+  def test_converts_4
+    roman = convert_number 4
+
+    assert_equal "IV", roman
+  end
+
+  def test_converts_5
+    roman = convert_number 5
+
+    assert_equal "V", roman
+  end
+
 end
