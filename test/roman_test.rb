@@ -2,24 +2,26 @@ require 'minitest/autorun'
 require 'roman'
 
 class RomanTest < Minitest::Test
+  def convert_number arabic
+    converter = Roman.new
+
+    converter.convert arabic
+  end
 
   def test_converts_1
-    converter = Roman.new
-    roman = converter.convert 1
+    roman = convert_number 1
 
     assert_equal "I", roman
   end
 
   def test_converts_2
-    converter = Roman.new
-    roman = converter.convert 2
+    roman = convert_number 2
 
     assert_equal "II", roman
   end
 
   def test_converts_3
-    converter = Roman.new
-    roman = converter.convert 3
+    roman = convert_number 3
 
     assert_equal "III", roman
   end
