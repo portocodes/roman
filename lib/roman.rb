@@ -26,22 +26,26 @@ class Roman
   end
 
   def five_to_eight arabic
-    "V" << actually_converts(arabic - 5)
+    lalala "V", 5, arabic
   end
 
   def ten_range arabic
-    "X" << actually_converts(arabic - 10)
+    lalala "X", 10, arabic
   end
 
   def fourty_range arabic
-    "XL" << actually_converts(arabic - 40)
+    lalala "XL", 40, arabic
   end
 
   def fifty_range arabic
-    "L" << actually_converts(arabic - 50)
+    lalala "L", 50, arabic
   end
 
   def ninety_range arabic
-    "XC" << actually_converts(arabic - 90)
+    lalala "XC", 90, arabic
+  end
+
+  def lalala roman_base, arabic_base, arabic
+    roman_base << actually_converts(arabic - arabic_base)
   end
 end
